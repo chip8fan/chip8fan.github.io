@@ -1,4 +1,4 @@
 import os
-os.chdir(f"src/stockfish/src")
+os.chdir("src/stockfish/src")
 os.system("make build")
-os.rename("stockfish", f"../../../bin/stockfish")
+os.rename("stockfish", "../../../bin/stockfish")
