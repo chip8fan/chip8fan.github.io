@@ -1,4 +1,6 @@
 {
     "stockfish": "https://github.com/official-stockfish/Stockfish",
-    "lc0": "https://github.com/LeelaChessZero/lc0"
+    "lc0": "https://github.com/LeelaChessZero/lc0",
+    "meson": "https://github.com/mesonbuild/meson",
+    "ninja": "https://github.com/ninja-build/ninja"
 }
