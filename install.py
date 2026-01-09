@@ -3,7 +3,7 @@ import shutil
 if os.path.isdir("_internal"):
     shutil.rmtree("_internal")
     os.remove("cepm")
-os.system("pyinstaller cepm.py")
+os.system("python3 -m PyInstaller cepm.py")
 os.chdir("dist/cepm")
 os.system("mv * ../..")
 os.chdir("../..")
