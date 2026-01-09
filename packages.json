@@ -1,4 +1,4 @@
 {
-    "stockfish-nnue": "https://github.com/official-stockfish/Stockfish",
+    "stockfish": "https://github.com/official-stockfish/Stockfish",
     "lc0": "https://github.com/LeelaChessZero/lc0"
 }
