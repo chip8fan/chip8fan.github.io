@@ -31,8 +31,10 @@ elif sys.argv[1] == "remove":
     os.remove(f"src/{sys.argv[2]}.zip")
     shutil.rmtree(f"src/{sys.argv[2]}")
 elif sys.argv[1] == "remove-all":
-    shutil.rmtree("bin")
-    shutil.rmtree("src")
+    if os.path.isdir("bin"):
+        shutil.rmtree("bin")
+    if os.path.isdir("src"):
+        shutil.rmtree("src")
     os.mkdir("bin")
     os.mkdir("src")
 elif sys.argv[1] == "update-package-list":
