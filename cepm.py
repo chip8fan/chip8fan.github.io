@@ -6,6 +6,10 @@ if len(sys.argv) < 2:
     sys.argv.append("help")
 os.chdir(os.path.dirname(os.path.realpath(__file__)).split("_internal")[0])
 data = json.load(open("packages.json"))
+if os.path.isdir("bin") == False:
+    os.mkdir("bin")
+if os.path.isdir("src") == False:
+    os.mkdir("src")
 if sys.argv[1] == "install":
     os.chdir("src")
     if len(sys.argv) < 3:
