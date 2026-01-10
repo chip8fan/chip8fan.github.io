@@ -41,7 +41,7 @@ elif sys.argv[1] == "remove-all":
         shutil.rmtree("src")
     os.mkdir("bin")
     os.mkdir("src")
-elif sys.argv[1] == "update-package-list":
+elif sys.argv[1] == "update":
     os.remove("packages.json")
     os.system("wget https://raw.githubusercontent.com/chip8fan/chip8fan.github.io/refs/heads/main/packages.json")
     for key in json.load(open("packages.json")):
