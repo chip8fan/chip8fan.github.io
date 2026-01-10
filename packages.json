@@ -3,5 +3,6 @@
     "lc0": "https://github.com/LeelaChessZero/lc0",
     "meson": "https://github.com/mesonbuild/meson",
     "ninja": "https://github.com/ninja-build/ninja",
-    "fairy-stockfish": "https://github.com/fairy-stockfish/Fairy-Stockfish"
+    "fairy-stockfish": "https://github.com/fairy-stockfish/Fairy-Stockfish",
+    "pgn-extract": "https://github.com/kentdjb/pgn-extract"
 }
