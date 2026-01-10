@@ -45,7 +45,8 @@ elif sys.argv[1] == "update-package-list":
     os.remove("packages.json")
     os.system("wget https://raw.githubusercontent.com/chip8fan/chip8fan.github.io/refs/heads/main/packages.json")
     for key in json.load(open("packages.json")):
-        os.system(f"wget -O scripts/{key}.py https://raw.githubusercontent.com/chip8fan/chip8fan.github.io/refs/heads/main/scripts/{key}.py")
+        if os.path.isfile(f"scripts/{key}.py") == False:
+            os.system(f"wget -O scripts/{key}.py https://raw.githubusercontent.com/chip8fan/chip8fan.github.io/refs/heads/main/scripts/{key}.py")
 elif sys.argv[1] == "help":
     file = open("cepm.py")
     lines = [line.rstrip().split('"')[1].split('"')[0] for line in file if "sys.argv[1] ==" in line]
