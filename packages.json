@@ -4,5 +4,6 @@
     "meson": "https://github.com/mesonbuild/meson",
     "ninja": "https://github.com/ninja-build/ninja",
     "fairy-stockfish": "https://github.com/fairy-stockfish/Fairy-Stockfish",
-    "pgn-extract": "https://github.com/kentdjb/pgn-extract"
+    "pgn-extract": "https://github.com/kentdjb/pgn-extract",
+    "draw-engine": "https://github.com/chip8fan/draw-engine"
 }

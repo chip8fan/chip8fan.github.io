@@ -31,9 +31,12 @@ elif sys.argv[1] == "remove":
     if len(sys.argv) < 3:
         print("cepm remove [package_name]")
         sys.exit()
-    os.remove(f"bin/{sys.argv[2]}")
-    os.remove(f"src/{sys.argv[2]}.zip")
-    shutil.rmtree(f"src/{sys.argv[2]}")
+    if os.path.isfile(f"bin/{sys.argv[2]}"):
+        os.remove(f"bin/{sys.argv[2]}")
+    elif os.path.isdir(f"bin/{sys.argv[2]}"):
+        shutil.rmtree(f"bin/{sys.argv[2]}")
+    if os.path.isdir(f"src/{sys.argv[2]}"):
+        shutil.rmtree(f"src/{sys.argv[2]}")
 elif sys.argv[1] == "remove-all":
     if os.path.isdir("bin"):
         shutil.rmtree("bin")
@@ -42,7 +45,8 @@ elif sys.argv[1] == "remove-all":
     os.mkdir("bin")
     os.mkdir("src")
 elif sys.argv[1] == "update":
-    os.remove("packages.json")
+    if os.path.isfile("packages.json"):
+        os.remove("packages.json")
     os.system("wget https://raw.githubusercontent.com/chip8fan/chip8fan.github.io/refs/heads/main/packages.json")
     for key in json.load(open("packages.json")):
         if os.path.isfile(f"scripts/{key}.py") == False:
