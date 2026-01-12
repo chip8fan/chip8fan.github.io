@@ -2,6 +2,7 @@ import json
 import sys
 import os
 import shutil
+import requests
 if len(sys.argv) < 2:
     sys.argv.append("help")
 os.chdir(os.path.dirname(os.path.realpath(__file__)).split("_internal")[0])
@@ -25,8 +26,9 @@ elif sys.argv[1] == "list-all":
     for key in json.load(open("packages.json")):
         print(key)
 elif sys.argv[1] == "list":
-    for file in os.listdir(os.getcwd() + "/bin"):
-        print(file)
+    for file in os.listdir(os.getcwd() + "/src"):
+        if file.lower() != ".ds_store":
+            print(file.lower())
 elif sys.argv[1] == "remove":
     if len(sys.argv) < 3:
         print("cepm remove [package_name]")
@@ -45,12 +47,11 @@ elif sys.argv[1] == "remove-all":
     os.mkdir("bin")
     os.mkdir("src")
 elif sys.argv[1] == "update":
-    if os.path.isfile("packages.json"):
-        os.remove("packages.json")
-    os.system("wget https://raw.githubusercontent.com/chip8fan/chip8fan.github.io/refs/heads/main/packages.json")
+    with open("packages.json", "wb") as package_list:
+        package_list.write(requests.get("https://raw.githubusercontent.com/chip8fan/chip8fan.github.io/refs/heads/main/packages.json").content)
     for key in json.load(open("packages.json")):
-        if os.path.isfile(f"scripts/{key}.py") == False:
-            os.system(f"wget -O scripts/{key}.py https://raw.githubusercontent.com/chip8fan/chip8fan.github.io/refs/heads/main/scripts/{key}.py")
+        with open(f"scripts/{key}.py", "wb") as script:
+            script.write(requests.get(f"https://raw.githubusercontent.com/chip8fan/chip8fan.github.io/refs/heads/main/scripts/{key}.py").content)
 elif sys.argv[1] == "help":
     file = open("cepm.py")
     lines = [line.rstrip().split('"')[1].split('"')[0] for line in file if "sys.argv[1] ==" in line]
